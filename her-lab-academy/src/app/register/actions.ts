@@ -11,6 +11,7 @@ export async function register(formData: FormData) {
   const password = formData.get('password') as string;
   const fullName = formData.get('fullName') as string;
   const enrollmentCode = formData.get('enrollmentCode') as string;
+  const phone = (formData.get('phone') as string | null) || null;
 
   // Normalize input
   const rawCode = (enrollmentCode || '').trim().toUpperCase();
@@ -69,6 +70,7 @@ export async function register(formData: FormData) {
       email: authData.user.email,
       full_name: fullName,
       role: 'student',
+      ...(phone ? { phone } : {}),
     });
 
     if (profileError) {

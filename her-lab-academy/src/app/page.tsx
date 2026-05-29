@@ -67,7 +67,7 @@ export default function LandingPage() {
                 <div className="p-3 bg-white/10 rounded-full mb-4">
                   <BookOpen className="h-8 w-8 text-[var(--color-accent)]" />
                 </div>
-                <div className="text-4xl font-display font-bold text-white mb-2">12</div>
+                <div className="text-4xl font-display font-bold text-white mb-2">13</div>
                 <div className="text-[var(--color-accent)]/80 text-sm font-medium uppercase tracking-wide">Vocational Programs</div>
               </div>
               <div className="flex flex-col items-center p-4">

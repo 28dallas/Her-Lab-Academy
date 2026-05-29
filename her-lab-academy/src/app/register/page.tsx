@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { register } from "./actions";
@@ -52,9 +53,20 @@ export default function RegisterPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-sm border border-gray-100">
         <div className="text-center">
-          <h2 className="mt-6 text-3xl font-display font-bold text-[var(--color-text-dark)]">
-            Student Registration
+          <div className="flex justify-center mb-4">
+            <Image
+              src="/logo/logo.webp"
+              alt="Her Lab Academy"
+              width={56}
+              height={56}
+              className="rounded-full object-cover"
+              priority
+            />
+          </div>
+          <h2 className="text-3xl font-display font-bold text-[var(--color-text-dark)]">
+            Create your account
           </h2>
+          <p className="mt-1 text-xs text-gray-500">Her Lab Academy — Empowering Women Through Vocational Training</p>
           <p className="mt-2 text-sm text-gray-600">
             Already have an account?{" "}
             <Link href="/login" className="font-medium text-[var(--color-primary)] hover:text-[#cf5626]">
@@ -101,6 +113,19 @@ export default function RegisterPage() {
             </div>
 
             <PasswordField />
+
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                Phone Number <span className="text-gray-400 font-normal">(optional)</span>
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                className="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] sm:text-sm"
+                placeholder="e.g. 0712 345 678"
+              />
+            </div>
 
             <div>
               <label htmlFor="enrollment-code" className="block text-sm font-medium text-gray-700">

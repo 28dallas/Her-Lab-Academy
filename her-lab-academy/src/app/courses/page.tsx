@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { Search, LayoutGrid, List as ListIcon, Filter } from 'lucide-react';
+import { Search, LayoutGrid, List as ListIcon } from 'lucide-react';
 
 export default function CoursesPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -13,20 +13,20 @@ export default function CoursesPage() {
 
   const tabs = ['All', 'Trades', 'Vocational', 'Agriculture', 'Technology', 'Health', 'Business'];
 
-  // Temporary mock data
   const allCourses = [
-    { id: '1', title: 'Electrical Installation', category: 'Trades', icon: '⚡', duration: '10 weeks', color: 'bg-yellow-50 text-yellow-600', teacher: 'James O.' },
-    { id: '2', title: 'Solar PV Installation', category: 'Trades', icon: '☀️', duration: '10 weeks', color: 'bg-orange-50 text-orange-500', teacher: 'Peter N.' },
-    { id: '3', title: 'Plumbing', category: 'Trades', icon: '🔧', duration: '10 weeks', color: 'bg-slate-50 text-slate-600', teacher: 'John D.' },
-    { id: '4', title: 'Cosmetology', category: 'Vocational', icon: '✂️', duration: '8 weeks', color: 'bg-pink-50 text-pink-600', teacher: 'Jane M.' },
-    { id: '5', title: 'Fashion Design', category: 'Vocational', icon: '🧵', duration: '16 weeks', color: 'bg-purple-50 text-purple-600', teacher: 'Grace W.' },
-    { id: '6', title: 'Regenerative Agriculture', category: 'Agriculture', icon: '🌍', duration: '12 weeks', color: 'bg-green-50 text-green-600', teacher: 'Sarah K.' },
-    { id: '7', title: 'Core Agriculture', category: 'Agriculture', icon: '🌱', duration: '12 weeks', color: 'bg-lime-50 text-lime-600', teacher: 'Mary W.' },
-    { id: '8', title: 'Reproductive Health', category: 'Health', icon: '🩺', duration: '6 weeks', color: 'bg-red-50 text-red-500', teacher: 'Dr. Aisha M.' },
-    { id: '9', title: 'ICT', category: 'Technology', icon: '💻', duration: '10 weeks', color: 'bg-blue-50 text-blue-600', teacher: 'Kevin O.' },
-    { id: '10', title: 'Basic Digital Literacy', category: 'Technology', icon: '📱', duration: '6 weeks', color: 'bg-cyan-50 text-cyan-600', teacher: 'Kevin O.' },
-    { id: '11', title: 'Entrepreneurship', category: 'Business', icon: '💼', duration: '8 weeks', color: 'bg-amber-50 text-amber-600', teacher: 'Ruth N.' },
-    { id: '12', title: 'Beadwork', category: 'Vocational', icon: '💟', duration: '8 weeks', color: 'bg-rose-50 text-rose-500', teacher: 'Esther K.' },
+    { id: '1',  title: 'Electrical Installation',   category: 'Trades',       icon: '⚡',  duration: '10 weeks', color: 'bg-yellow-50 text-yellow-600' },
+    { id: '2',  title: 'Solar PV Installation',      category: 'Trades',       icon: '☀️',  duration: '10 weeks', color: 'bg-orange-50 text-orange-500' },
+    { id: '3',  title: 'Plumbing',                   category: 'Trades',       icon: '🔧',  duration: '10 weeks', color: 'bg-slate-50 text-slate-600'   },
+    { id: '4',  title: 'Cosmetology',                category: 'Vocational',   icon: '✂️',  duration: '8 weeks',  color: 'bg-pink-50 text-pink-600'     },
+    { id: '5',  title: 'Fashion Design',             category: 'Vocational',   icon: '🧵',  duration: '16 weeks', color: 'bg-purple-50 text-purple-600' },
+    { id: '6',  title: 'Regenerative Agriculture',   category: 'Agriculture',  icon: '🌍',  duration: '12 weeks', color: 'bg-green-50 text-green-600'   },
+    { id: '7',  title: 'Core Agriculture',           category: 'Agriculture',  icon: '🌱',  duration: '12 weeks', color: 'bg-lime-50 text-lime-600'     },
+    { id: '8',  title: 'Reproductive Health',        category: 'Health',       icon: '🩺',  duration: '6 weeks',  color: 'bg-red-50 text-red-500'       },
+    { id: '9',  title: 'ICT',                        category: 'Technology',   icon: '💻',  duration: '10 weeks', color: 'bg-blue-50 text-blue-600'     },
+    { id: '10', title: 'Basic Digital Literacy',     category: 'Technology',   icon: '📱',  duration: '6 weeks',  color: 'bg-cyan-50 text-cyan-600'     },
+    { id: '11', title: 'Entrepreneurship',           category: 'Business',     icon: '💼',  duration: '8 weeks',  color: 'bg-amber-50 text-amber-600'   },
+    { id: '12', title: 'Beadwork',                   category: 'Vocational',   icon: '📿',  duration: '8 weeks',  color: 'bg-rose-50 text-rose-500'     },
+    { id: '13', title: 'Soap Making',                category: 'Vocational',   icon: '🧼',  duration: '4 weeks',  color: 'bg-teal-50 text-teal-600'     },
   ];
 
   const filteredCourses = allCourses.filter(course => {
@@ -45,9 +45,8 @@ export default function CoursesPage() {
           <p className="text-lg text-gray-600 max-w-2xl">Browse our comprehensive list of vocational and technical training courses designed to equip you with practical, job-ready skills.</p>
         </div>
 
-        {/* Toolbar: Search, Filters, View Toggle */}
+        {/* Toolbar */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-          {/* Search */}
           <div className="relative w-full md:w-96">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Search className="h-5 w-5 text-gray-400" />
@@ -62,7 +61,6 @@ export default function CoursesPage() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto">
-            {/* Tabs */}
             <div className="flex items-center space-x-1 bg-gray-200/50 p-1 rounded-lg overflow-x-auto w-full sm:w-auto hide-scrollbar">
               {tabs.map((tab) => (
                 <button
@@ -79,7 +77,6 @@ export default function CoursesPage() {
               ))}
             </div>
 
-            {/* View Toggle */}
             <div className="hidden sm:flex items-center space-x-1 border border-gray-200 rounded-lg p-1 bg-white">
               <button
                 onClick={() => setViewMode('grid')}
@@ -99,21 +96,19 @@ export default function CoursesPage() {
           </div>
         </div>
 
-        {/* Results Info */}
-        <div className="mb-6 flex justify-between items-center">
+        <div className="mb-6">
           <p className="text-sm text-gray-500">
             Showing <span className="font-semibold text-gray-900">{filteredCourses.length}</span> programs
           </p>
         </div>
 
-        {/* Course Grid/List */}
         {filteredCourses.length === 0 ? (
           <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
             <Search className="mx-auto h-12 w-12 text-gray-300 mb-4" />
             <h3 className="text-lg font-medium text-gray-900">No programs found</h3>
-            <p className="mt-1 text-gray-500">Try adjusting your search or filter to find what you're looking for.</p>
-            <button 
-              onClick={() => {setSearchQuery(''); setActiveTab('All');}}
+            <p className="mt-1 text-gray-500">Try adjusting your search or filter.</p>
+            <button
+              onClick={() => { setSearchQuery(''); setActiveTab('All'); }}
               className="mt-4 text-[var(--color-primary)] font-medium hover:underline"
             >
               Clear all filters
@@ -121,14 +116,14 @@ export default function CoursesPage() {
           </div>
         ) : (
           <div className={
-            viewMode === 'grid' 
-              ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" 
+            viewMode === 'grid'
+              ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
               : "flex flex-col space-y-4"
           }>
             {filteredCourses.map((course) => (
-              <Link 
-                key={course.id} 
-                href={`/courses/${course.id}`} 
+              <Link
+                key={course.id}
+                href={`/courses/${course.id}`}
                 className={`group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-[var(--color-primary)] hover:shadow-md transition-all ${
                   viewMode === 'list' ? 'flex flex-row items-center h-32' : 'flex flex-col'
                 }`}
@@ -138,22 +133,14 @@ export default function CoursesPage() {
                 } flex-shrink-0 flex items-center justify-center text-5xl ${course.color} transition-transform group-hover:scale-105 duration-300`}>
                   {course.icon}
                 </div>
-                <div className={`p-5 flex flex-col justify-between ${viewMode === 'list' ? 'flex-grow h-full justify-center' : ''}`}>
+                <div className={`p-5 flex flex-col justify-between ${viewMode === 'list' ? 'flex-grow' : ''}`}>
                   <div>
-                    <div className="flex justify-between items-start mb-2">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">{course.category}</span>
-                    </div>
-                    <h3 className="text-lg font-bold text-[var(--color-text-dark)] group-hover:text-[var(--color-primary)] transition-colors line-clamp-2 mb-1">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">{course.category}</span>
+                    <h3 className="mt-1 text-lg font-bold text-[var(--color-text-dark)] group-hover:text-[var(--color-primary)] transition-colors line-clamp-2">
                       {course.title}
                     </h3>
                   </div>
-                  <div className={`flex items-center text-sm text-gray-500 mt-4 ${viewMode === 'list' ? 'mt-2' : ''}`}>
-                    <span className="flex items-center">
-                      Instructor: <span className="font-medium text-gray-700 ml-1">{course.teacher}</span>
-                    </span>
-                    <span className="mx-2">•</span>
-                    <span>{course.duration}</span>
-                  </div>
+                  <p className="mt-3 text-sm text-gray-500">{course.duration}</p>
                 </div>
               </Link>
             ))}
