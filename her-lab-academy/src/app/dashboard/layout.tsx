@@ -1,20 +1,29 @@
-import { Navbar } from "@/components/layout/Navbar";
-import { Sidebar } from "@/components/layout/Sidebar";
+import { redirect } from 'next/navigation';
+import { createClient } from '@/utils/supabase/server';
+import { Navbar } from '@/components/layout/Navbar';
+import { Sidebar } from '@/components/layout/Sidebar';
 
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) redirect('/login');
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single();
+
+  if (profile?.role === 'admin') redirect('/admin');
+  if (profile?.role === 'teacher') redirect('/teacher');
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      {/* Passing mock user for now to show the dashboard view */}
-      <Navbar user={{ id: '1', email: 'student@example.com', user_metadata: { full_name: 'Jane Doe' } }} role="student" />
+      <Navbar user={user} role="student" />
       <div className="flex-1 flex overflow-hidden">
         <Sidebar role="student" />
-        <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
-          {children}
-        </main>
+        <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">{children}</main>
       </div>
     </div>
   );
